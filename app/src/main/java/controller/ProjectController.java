@@ -17,10 +17,10 @@ import util.ConnectionFactory;
 public class ProjectController {
     
  public void save(Project project ) {
-        String sql = "INSERT INTO project (name,"
+        String sql = "INSERT INTO projects (name,"
                 + "description,"
                 + "createdAt,"
-                + "updatedAt,"
+                + "updatedAt)"
                 + "VALUES (?, ?, ?, ?)";
 
         Connection connection = null;

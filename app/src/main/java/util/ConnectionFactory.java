@@ -25,7 +25,7 @@ public class ConnectionFactory {
         }
     }
     
-    public static void CloseConnection(Connection connection){
+    public static void closeConnection(Connection connection){
         try {
             if (connection != null) {
             connection.close();
@@ -36,7 +36,7 @@ public class ConnectionFactory {
         }
     }    
     
-    public static void CloseConnection(Connection connection, PreparedStatement statement){
+    public static void closeConnection(Connection connection, PreparedStatement statement){
         try {
             if (connection != null) {
             connection.close();
@@ -50,7 +50,7 @@ public class ConnectionFactory {
         }
     }
     
-     public static void CloseConnection(Connection connection, PreparedStatement statement, ResultSet resultset){
+     public static void closeConnection(Connection connection, PreparedStatement statement, ResultSet resultset){
         try {
             if (connection != null) {
             connection.close();
@@ -69,17 +69,5 @@ public class ConnectionFactory {
     }
     
     
-    
 
-    public static void closeConnection(Connection conn) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public static void closeConnection(Connection connection, PreparedStatement statement) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public static void closeConnection(Connection connection, PreparedStatement statement, ResultSet resultSet) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
