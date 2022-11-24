@@ -31,6 +31,10 @@ public class Task {
         this.updatedAt = updatedAt;
         this.priority = priority;
     }
+    
+    public Task () {
+       this.createdAt = new Date(); 
+    }
 
     public int getId() {
         return id;
@@ -115,6 +119,10 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" + "id=" + id + ", idProject=" + idProject + ", name=" + name + ", description=" + description + ", notes=" + notes + ", isCompleted=" + isCompleted + ", deadline=" + deadline + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", priority=" + priority + '}';
+    }
+
+    public boolean isCompleted() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
