@@ -14,19 +14,21 @@ public class Main {
    
 
     public static void main(String[] args) {
-     // 
-      // ProjectController projectController = new ProjectController();
+      
+       ProjectController projectController = new ProjectController();
        
-      // Date data = new Date();
+       Date data = new Date();
        
-      // Project project = new Project();
-      // project.setName("Projeto teste");
-      // project.setDescription("description");
-      // project.setUpdatedAt(data);
-      // project.setCreatedAt(data);
-      // projectController.save(project);
+       Project project = new Project();
+       project.setName("Projet089999nnn");
+       project.setDescription("description");
+       project.setUpdatedAt(data);
+       project.setCreatedAt(data);
+       projectController.save(project);
          
        
+      /*
+      
  ProjectController projectController = new ProjectController(); 
  
  Project project = new Project();
@@ -38,6 +40,7 @@ public class Main {
 List<Project> projects = projectController.getAll();
 System.out.println ("Total de Projetos = " + projects.size()); 
 projectController.removeById(12);
+*/
    }
 
     }
