@@ -5,6 +5,7 @@
 package view;
 
 import controller.ProjectController;
+import java.util.Date;
 import model.Project;
 import javax.swing.JOptionPane;
 
@@ -144,11 +145,13 @@ public class ProjectJDialogScreen extends javax.swing.JDialog {
 
     private void jLabelTooBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTooBarSaveMouseClicked
         // TODO add your handling code here:
-        
+       
        try{
         Project project = new Project();
         project.setName(jTextFieldName.getText());
         project.setDescription(jTextAreaDescription.getText());
+        project.setCreatedAt(new Date());
+        project.setUpdatedAt(new Date());
         
         controller.save(project);
         JOptionPane.showMessageDialog(rootPane, "Projeto salvo com sucesso");
