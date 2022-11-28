@@ -3,9 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
 import java.awt.Color;
 import java.awt.Font;
-
+import controller.ProjectController;
+import controller.TaskController;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import model.Project;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -13,12 +20,17 @@ import java.awt.Font;
  */
 public class MainScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainScreen
-     */
+    ProjectController projectController;
+    TaskController taskController;
+
+    DefaultListModel projectModel;
+
     public MainScreen() {
         initComponents();
         decorateTableTask();
+
+        initDataController();
+        initComponetsModel();
     }
 
     /**
@@ -196,11 +208,6 @@ public class MainScreen extends javax.swing.JFrame {
         jPanelProjectList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jListProjects.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jListProjects.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListProjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListProjects.setFixedCellHeight(45);
         jListProjects.setSelectionBackground(new java.awt.Color(0, 153, 102));
@@ -318,9 +325,15 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelProjectsAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProjectsAddMouseClicked
-     // TODO add your handling code here:
+        // TODO add your handling code here:
         ProjectJDialogScreen projectDialogScreen = new ProjectJDialogScreen(this, rootPaneCheckingEnabled);
         projectDialogScreen.setVisible(true);
+
+        projectDialogScreen.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent e) {
+                loadProjects();
+            }
+        });
 
     }//GEN-LAST:event_jLabelProjectsAddMouseClicked
 
@@ -329,15 +342,14 @@ public class MainScreen extends javax.swing.JFrame {
         TaskJDialogScreen taskDialogScreen = new TaskJDialogScreen(this, rootPaneCheckingEnabled);
         //taskDialogScreen.setProject(null);
         taskDialogScreen.setVisible(true);
-       
+
     }//GEN-LAST:event_jLabelTasksAddMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-       
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -392,16 +404,38 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTable jTableTasks;
     // End of variables declaration//GEN-END:variables
 
+    public void decorateTableTask() {
 
-    public void decorateTableTask(){
-        
         //Customizando o header da table de tarefas
         System.out.println("oooo");
         jTableTasks.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
         jTableTasks.getTableHeader().setBackground(new Color(0, 153, 102));
         jTableTasks.getTableHeader().setForeground(new Color(255, 255, 255));
-        
+
         //Criando um sort automático para as colunas da table
         jTableTasks.setAutoCreateRowSorter(true);
     }
+
+    public void initDataController() {
+        projectController = new ProjectController();
+        taskController = new TaskController();
+    }
+
+    public void initComponetsModel() {
+        projectModel = new DefaultListModel();
+        loadProjects();
+    }
+
+    public void loadProjects() {
+        List<Project> projects = projectController.getAll();
+
+        projectModel.clear();
+
+        for (int i = 0; i < projects.size(); i++) {
+            Project project = projects.get(i);
+            projectModel.addElement(project);
+        }
+        jListProjects.setModel(projectModel);
+    }
+
 }
