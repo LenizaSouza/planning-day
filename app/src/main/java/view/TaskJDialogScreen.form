@@ -124,7 +124,7 @@
                       <Component id="jLabeldeadline" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelNotes" alignment="0" max="32767" attributes="0"/>
                       <Component id="jTextFieldName" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPaneDescription" alignment="0" pref="396" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneDescription" alignment="0" pref="406" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

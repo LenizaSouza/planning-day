@@ -480,10 +480,12 @@ public class MainScreen extends javax.swing.JFrame {
         taskModel = new TaskTableModel();
         jTableTasks.setModel(taskModel);
                
-        if(!projectsModel.isEmpty());
-        jListProjects.setSelectedIndex(0);
-        Project project = (Project) projectsModel.get(0);
-        loadTasks(project.getId());
+        if(!projectsModel.isEmpty()) {
+            jListProjects.setSelectedIndex(0);
+            Project project = (Project) projectsModel.get(0);
+            loadTasks(project.getId());
+        }
+
     }
 
     public void loadTasks(int idProject) {
@@ -498,22 +500,21 @@ public class MainScreen extends javax.swing.JFrame {
             if (jPanel6EmptyList.isVisible()) {
                 jPanel6EmptyList.setVisible(false);
                 jPanel.remove(jPanel6EmptyList);
-        }
-        jPanel.add(jScrollPanel);
-        jScrollPanel.setVisible(true);
-        jScrollPanel.setSize(jPanel.getWidth(), jPanel.getHeight());
+            }
+            jPanel.add(jScrollPanel);
+            jScrollPanel.setVisible(true);
+            jScrollPanel.setSize(jPanel.getWidth(), jPanel.getHeight());
 
-        }else{
-    if (jScrollPanel.isVisible()) {
-            jScrollPanel.setVisible(false);
-            jPanel.remove(jScrollPanel);
+        } else{
+            if (jScrollPanel.isVisible()) {
+                jScrollPanel.setVisible(false);
+                jPanel.remove(jScrollPanel);
+            }
+            jPanel.add(jPanel6EmptyList);
+            jPanel6EmptyList.setVisible(true);
+            jPanel6EmptyList.setSize(jPanel.getWidth(),jPanel.getHeight());
         }
-    
-        jPanel.add(jPanel6EmptyList);
-        jPanel6EmptyList.setVisible(true);
-        jPanel6EmptyList.setSize(jPanel.getWidth(),jPanel.getHeight());
-        }
-}
+    }
  
     public void loadProjects() {
         List<Project> projects = projectController.getAll();
