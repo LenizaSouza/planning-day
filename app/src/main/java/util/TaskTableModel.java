@@ -51,16 +51,34 @@ public class TaskTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
 
         switch (columnIndex) {
+         
             case 0:
-                if (tasks.get(rowIndex).getPriority() == null) {
+                try {
+                    System.out.println("Colum: " + columnIndex);
+                    System.out.println("tasks: "+tasks.size());
+                    System.out.println(tasks.get(rowIndex).getPriority());
+                    if (tasks.get(rowIndex).getPriority() == null) {
+                        return "";
+                    }
+                    return tasks.get(rowIndex).getPriority(); 
+                } catch(Exception e) {
+                    System.out.println("");
+                }
+                               
+            case 1:
+                if(tasks.get(rowIndex).getName() == null){
                     return "";
                 }
-                return tasks.get(rowIndex).getPriority();                
-            case 1:
                 return tasks.get(rowIndex).getName();
             case 2:
+                if(tasks.get(rowIndex).getDescription() == null) {
+                    return "";   
+                }
                 return tasks.get(rowIndex).getDescription();
             case 3:
+                if(tasks.get(rowIndex).getDeadline() == null){
+                    return "";
+                }
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 return dateFormat.format (tasks.get(rowIndex).getDeadline());
             case 4:
