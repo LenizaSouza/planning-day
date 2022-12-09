@@ -1,3 +1,6 @@
+![Gerenciamento de Projetos e Tarefas](https://user-images.githubusercontent.com/109193153/206589037-a81f7982-9aee-4306-a455-7a5e60e56c99.png)
+
+
 # PLANNING DAY
 
 #### DESCRIÇÃO: 
